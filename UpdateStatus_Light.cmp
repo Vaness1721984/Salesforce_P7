@@ -1,0 +1,20 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+
+<aura:attribute name="lead" type="Object"/>
+<aura:attribute name="leadRecord" type="Object" default="{'sobjectType':'Contact', 'Status' : ''}"/>
+
+<aura:handler name="change" value="{!v.leadRecord}" 
+              action="{!c.handleClick}"/>
+
+<force:recordData aura:id="leadRec" 
+                  fields="Status"
+                  recordId="{!v.recordId}"  
+                  targetRecord="{!v.lead}"
+                  targetFields="{!v.leadRecord}"
+                  mode="EDIT"
+                  />
+
+<aura:handler name="init" value="{!this}" action="{!c.onload}"/>
+
+    
+</aura:component>
