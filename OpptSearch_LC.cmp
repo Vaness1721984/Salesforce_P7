@@ -1,0 +1,56 @@
+<aura:component
+  implements="flexiPage:availableForAllPageTypes,force:hasRecordId"
+  access="global"
+  controller="OpptSearchController"
+>
+  <aura:attribute name="isButtonActive" type="Boolean" default="true" />
+  <aura:attribute name="mydata" type="Object" />
+  <aura:attribute name="mycolumns" type="List" />
+  <aura:attribute name="sortedDirection" type="String" default="asc" />
+  <aura:attribute name="sortedBy" type="String" default="Name" />
+
+  <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+
+  <lightning:card
+    iconName="standard:opportunity"
+    title="Search for Opportunities by Keyword"
+  >
+    <div class="c-container">
+      <lightning:layout>
+        <lightning:layoutItem class="slds-float_left" padding="around-small">
+          <p>Keyword</p>
+        </lightning:layoutItem>
+        <lightning:layoutItem padding="around-small">
+          <lightning:recordEditForm>
+            <lightning:input
+              aura:id="keyword"
+              placeholder="Acme"
+              variant="label-hidden"
+              onchange="{!c.activeButton}"
+            />
+          </lightning:recordEditForm>
+        </lightning:layoutItem>
+        <lightning:layoutItem padding="around-small">
+          <lightning:button
+            variant="brand"
+            label="Search"
+            title="Search action"
+            onclick="{!c.search }"
+            disabled="{!v.isButtonActive}"
+          />
+        </lightning:layoutItem>
+      </lightning:layout>
+    </div>
+  </lightning:card>
+  <lightning:datatable
+    data="{! v.mydata }"
+    columns="{! v.mycolumns }"
+    keyField="Id"
+    showRowNumberColumn="true"
+    hideCheckboxColumn="true"
+    defaultSortDirection="{!v.defaultSortDirection}"
+    sortedDirection="{!v.sortedDirection}"
+    sortedBy="{!v.sortedBy}"
+    onsort="{!c.updateColumnSorting}"
+  />
+</aura:component>
