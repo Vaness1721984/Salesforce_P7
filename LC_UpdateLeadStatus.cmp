@@ -1,0 +1,15 @@
+<aura:component
+  implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader"
+  access="global"
+  controller="LCC_UpdateLeadStatus"
+>
+  <aura:attribute name="leadRecord" type="Lead" />
+  <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+
+  <force:recordData
+    aura:id="recordLoader"
+    recordId="{!v.recordId}"
+    fields="Name"
+    targetFields="{!v.leadRecord}"
+  />
+</aura:component>

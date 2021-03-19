@@ -1,0 +1,10 @@
+public class LCC_UpdateLeadStatus {
+    
+ @AuraEnabled
+    public static String updateField(Id recordId, String newStatus){
+  		Lead ld = new Lead(Id = recordId, Status = newStatus);
+        ld.Status = 'Working - Contacted';
+        update ld; 
+        return ld.Status;
+    }
+}
