@@ -1,0 +1,10 @@
+public with sharing class OpptSearchController {
+
+    @AuraEnabled
+    public static List<Opportunity> getOpportunities(String accId, String myKeyword) {
+        String keyword = '%' + myKeyword + '%';
+        List<Opportunity> opportunities  =
+                [SELECT Id, Name, StageName, Amount, CloseDate FROM Opportunity WHERE AccountId =: accId AND Name LIKE :keyword  ORDER BY Name];
+        return opportunities;
+    }  
+}
