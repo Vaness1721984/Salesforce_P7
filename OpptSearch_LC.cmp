@@ -11,10 +11,10 @@
 
   <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
 
-  <lightning:card
-    iconName="standard:opportunity"
-    title="Search for Opportunities by Keyword"
-  >
+  <lightning:card iconName="standard:opportunity" title="OppSearch">
+    <h1>
+      <b> Search for Opportunities by Keyword </b>
+    </h1>
     <div class="c-container">
       <lightning:layout>
         <lightning:layoutItem class="slds-float_left" padding="around-small">
