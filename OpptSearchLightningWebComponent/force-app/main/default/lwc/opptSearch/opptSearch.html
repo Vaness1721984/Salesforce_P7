@@ -1,0 +1,40 @@
+<template>
+    <lightning-card title="OppSearch" icon-name="standard:opportunity" >
+        <h1>
+            <b> Search for Opportunities by Keyword </b>
+            <lightning-helptext content="Enter a keyword to filter on opportunities"></lightning-helptext>
+          </h1>
+        <lightning-layout >
+            <lightning-layout-item  padding="around-small">
+                <p>Keyword</p>
+            </lightning-layout-item>
+                <lightning-layout-item  padding="around-small">
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                    <lightning-record-edit-form>         
+                  <lightning-input
+                   type="search"
+                    placeholder="Acme"
+                    variant="label-hidden"
+                   onchange={handleChange}
+                    ></lightning-input>
+                </lightning-record-edit-form>   
+                        </div>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+            <div if:true={oppList}>
+    <lightning-datatable
+    data={oppList}
+    columns={columns}
+    key-field="Id"
+    show-row-number-column="true"
+    hide-checkbox-column="true" 
+    default-sort-direction={defaultSortDirection}
+    sorted-direction={sortDirection}
+    sorted-by={sortedBy}
+    onsort={onHandleSort}>
+</lightning-datatable>
+</div>    
+</lightning-card> 
+</template>
