@@ -66,10 +66,3 @@ sortBy( field, reverse, primer ) {
     };
 }
     }
-
-
-
-
- 
-
-
