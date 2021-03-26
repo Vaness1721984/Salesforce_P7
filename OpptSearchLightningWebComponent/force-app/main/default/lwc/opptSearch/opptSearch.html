@@ -22,8 +22,7 @@
                         </div>
                     </div>
                 </lightning-layout-item>
-            </lightning-layout>
-            <div if:true={oppList}>
+            </lightning-layout> 
     <lightning-datatable
     data={oppList}
     columns={columns}
@@ -35,6 +34,5 @@
     sorted-by={sortedBy}
     onsort={onHandleSort}>
 </lightning-datatable>
-</div>    
 </lightning-card> 
 </template>

@@ -14,6 +14,9 @@
   <lightning:card iconName="standard:opportunity" title="OppSearch">
     <h1>
       <b> Search for Opportunities by Keyword </b>
+      <lightning:helptext
+        content="Enter a keyword and click on Search button to filter on opportunities"
+      />
     </h1>
     <div class="c-container">
       <lightning:layout>

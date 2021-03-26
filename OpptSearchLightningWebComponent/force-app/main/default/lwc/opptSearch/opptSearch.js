@@ -4,7 +4,7 @@ import getOpportunities from '@salesforce/apex/OpportunityController.getOpportun
 const COLUMNS = [
     { label: 'Name', fieldName: 'recordLink', type: 'url', sortable:true, typeAttributes: { label: { fieldName: "Name" },tooltip:"Name",  target: "_blank" } },
     { label: 'Stage Name', fieldName: 'StageName', type: 'picklist', sortable:true },
-    { label: 'Amount', fieldName: 'Amount', type: 'currency', sortable:true },
+    { label: 'Amount', fieldName: 'Amount', type: 'currency', cellAttributes:{alignment:'left'}, sortable:true },
     { label: 'Close Date', fieldName: 'CloseDate', type: 'date', sortable:true }
 ];
 
@@ -14,9 +14,11 @@ columns = COLUMNS;
 @api recordId;
 error;  
 @track oppList = [];  
-searchKey = '';
+@track searchKey = '';
+
 
   @wire(getOpportunities,{accountId: '$recordId',searchKey: '$searchKey'})  
+
   
   getOppList({ error, data }) {  
    if (data) {  
@@ -37,8 +39,9 @@ searchKey = '';
   handleChange(evt) {
     const searchKey = evt.target.value;
     this.searchKey = searchKey;
-    console.log('Current value of the input: ' + evt.target.value);
-}
+    }
+    
+   
 
   onHandleSort( event ) {
     const { fieldName: sortedBy, sortDirection } = event.detail;
