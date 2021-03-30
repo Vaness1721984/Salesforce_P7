@@ -3,6 +3,7 @@ public inherited sharing class OpportunityController {
     public static List<Opportunity> getOpportunities(String accountId, String searchKey) {
       String  key = '%' + searchKey + '%';
       List<Opportunity> oppListSelect = new List<Opportunity>();
+      IF (searchKey != '')
         oppListSelect = [
             SELECT Id,Name, StageName, Amount, CloseDate
             FROM Opportunity
