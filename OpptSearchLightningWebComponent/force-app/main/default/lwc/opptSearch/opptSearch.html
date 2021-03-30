@@ -1,43 +1,33 @@
 <template>
-    <lightning-card title="OppSearch" icon-name="standard:opportunity" >
+    <lightning-card title="OppSearch" icon-name="standard:opportunity">
         <h1>
             <b> Search for Opportunities by Keyword </b>
-            <lightning-helptext content="Enter a keyword to filter on opportunities"></lightning-helptext>
-          </h1>
-        <lightning-layout >
-            <lightning-layout-item  padding="around-small">
+            <lightning-helptext content="Enter a keyword and press enter key to filter on opportunities"></lightning-helptext>
+        </h1>
+        <lightning-layout>
+            <lightning-layout-item padding="around-small">
                 <p>Keyword</p>
             </lightning-layout-item>
-                <lightning-layout-item  padding="around-small">
-                    <div class="slds-form-element">
-                        <div class="slds-form-element__control">
-                    <lightning-record-edit-form>         
-                  <lightning-input
-                   type="search"
-                    placeholder="Acme"
-                    variant="label-hidden"
-                   onchange={handleChange}
-                    ></lightning-input>
-                </lightning-record-edit-form>   
-                        </div>
+            <lightning-layout-item padding="around-small">
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <lightning-record-edit-form>
+                            <lightning-input type="search" placeholder="Acme" variant="label-hidden"
+                                onkeypress={handleChange}>
+                            </lightning-input>
+                        </lightning-record-edit-form>
                     </div>
-                </lightning-layout-item>
-            </lightning-layout> 
-            <template if:true={showRecords}>     
-    <lightning-datatable
-    data={oppList}
-    columns={columns}
-    key-field="Id"
-    show-row-number-column="true"
-    hide-checkbox-column="true" 
-    default-sort-direction={defaultSortDirection}
-    sorted-direction={sortDirection}
-    sorted-by={sortedBy}
-    onsort={onHandleSort}>
-</lightning-datatable>
-</template>
-<template if:false={showRecords}>
-    No opportunity to display
-</template>
-</lightning-card> 
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+        <template if:true={showRecords}>
+            <lightning-datatable data={oppList} columns={columns} key-field="Id" show-row-number-column="true"
+                hide-checkbox-column="true" default-sort-direction={defaultSortDirection}
+                sorted-direction={sortDirection} sorted-by={sortedBy} onsort={onHandleSort}>
+            </lightning-datatable>
+        </template>
+        <template if:false={showRecords}>
+            <b>No opportunity to display...</b>
+        </template>
+    </lightning-card>
 </template>

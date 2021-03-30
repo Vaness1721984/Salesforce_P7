@@ -44,11 +44,13 @@ error;
 }
   }
 
-  handleChange(evt) {
-    const searchKey = evt.target.value;
+  handleChange(event) {
+    if(event.which == 13) {
+    let searchKey = event.target.value;
     this.searchKey = searchKey;
     }
-    
+}
+
   onHandleSort( event ) {
     const { fieldName: sortedBy, sortDirection } = event.detail;
     const cloneData = [...this.oppList];
