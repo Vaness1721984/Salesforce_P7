@@ -23,6 +23,7 @@
                     </div>
                 </lightning-layout-item>
             </lightning-layout> 
+            <template if:true={showRecords}>     
     <lightning-datatable
     data={oppList}
     columns={columns}
@@ -34,5 +35,9 @@
     sorted-by={sortedBy}
     onsort={onHandleSort}>
 </lightning-datatable>
+</template>
+<template if:false={showRecords}>
+    No opportunity to display
+</template>
 </lightning-card> 
 </template>

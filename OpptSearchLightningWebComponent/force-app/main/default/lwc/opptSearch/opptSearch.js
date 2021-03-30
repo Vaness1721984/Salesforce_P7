@@ -16,10 +16,8 @@ error;
 @track oppList = [];  
 @track searchKey = '';
 
-
   @wire(getOpportunities,{accountId: '$recordId',searchKey: '$searchKey'})  
 
-  
   getOppList({ error, data }) {  
    if (data) {  
     var tempOppList = [];  
@@ -36,13 +34,21 @@ error;
    }  
   }  
 
+  get showRecords() {
+    if (this.oppList) {
+        if (this.oppList.length === 0 && this.searchKey!='') {
+            return false;
+        } else {
+            return true;
+        }
+}
+  }
+
   handleChange(evt) {
     const searchKey = evt.target.value;
     this.searchKey = searchKey;
     }
     
-   
-
   onHandleSort( event ) {
     const { fieldName: sortedBy, sortDirection } = event.detail;
     const cloneData = [...this.oppList];
