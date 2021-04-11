@@ -3,7 +3,7 @@ import getOpportunities from '@salesforce/apex/OpportunityController.getOpportun
 
 const COLUMNS = [
     { label: 'Name', fieldName: 'recordLink', type: 'url', sortable:true, typeAttributes: { label: { fieldName: "Name" },tooltip:"Name",  target: "_blank" } },
-    { label: 'Stage', fieldName: 'StageName', type: 'picklist', sortable:true },
+    { label: 'Stage Name', fieldName: 'StageName', type: 'picklist', sortable:true },
     { label: 'Amount', fieldName: 'Amount', type: 'currency', cellAttributes:{alignment:'left'}, sortable:true },
     { label: 'Close Date', fieldName: 'CloseDate', type: 'date', sortable:true }
 ];
